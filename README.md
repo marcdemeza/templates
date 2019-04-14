@@ -1,2 +1,2 @@
-# templates
-Repository for azure pipeline templates
+# Templates
+Repository for azure pipeline Templates

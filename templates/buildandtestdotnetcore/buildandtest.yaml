@@ -1,0 +1,25 @@
+---
+parameters:
+  buildConfiguration: ''
+  projects: '**/*.csproj' #default value
+  testProjects: ''
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: ${{ parameters.projects }}
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    projects: ${{ parameters.projects }}
+    arguments: '--configuration ${{ parameters.buildConfiguration }}'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: ${{ parameters.testProjects }}
+    arguments: '--configuration ${{ parameters.buildConfiguration }}'
